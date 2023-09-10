@@ -19,3 +19,7 @@ npm i next-sanity (for connecting sanity  back with next.js front)
 5. Проверяем чтобы не было сломаных импортов и все готово. Теперь 'Sanity studio' и Next объеденены вместе.
 
 Далее создадим .env.local и перенесем туда часть переменных из 'sanity.config.ts' и 'sanity.cli.ts', после чего заменим их внутри этих файлов.
+
+Теперь мы настроим так, чтобы мы подключались к бекенду 'Sanity studio', когда на фронте мы переходим на страницу "http://localhost:3000/stidio". Для этого, сперва в app дирректории создадим папки - `studio/[[...index]]`. И внутри них - page.tsx.
+
+Теперь когда мы попробуем протестировать в браузере путь "/studio", то сперва мы получим ошибку - To access your content, you need to add the following URL as a CORS origin to your Sanity project. Но нужно просто перейти по ссылке на сайт Sanity и автоматически добавить CORS в наш профиль.
