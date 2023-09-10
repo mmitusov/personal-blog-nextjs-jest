@@ -16,4 +16,6 @@ npm i next-sanity (for connecting sanity  back with next.js front)
   schemas
   sanity.cli.ts
   sanity.config.ts
-5. Проверяем чтобы не было сломаных импортов и все готово.
+5. Проверяем чтобы не было сломаных импортов и все готово. Теперь 'Sanity studio' и Next объеденены вместе.
+
+Далее создадим .env.local и перенесем туда часть переменных из 'sanity.config.ts' и 'sanity.cli.ts', после чего заменим их внутри этих файлов.
