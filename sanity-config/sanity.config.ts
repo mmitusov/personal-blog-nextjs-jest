@@ -4,6 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import { myTheme } from './theme';
 import StudioCustomNavbar from './components/StudioCustomNavbar';
+import StudioCustomLogo from './components/StudioCustomLogo';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
@@ -25,7 +26,7 @@ export default defineConfig({
   theme: myTheme,
   studio: {
     components: {
-      // logo: StudioCustomLogo,
+      logo: StudioCustomLogo,
       navbar: StudioCustomNavbar
     }
   }
