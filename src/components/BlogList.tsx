@@ -1,5 +1,5 @@
 interface BlogListProps {
-  posts: any; //Post[]
+  posts: Post[]; 
 }
 
 const BlogList = ({posts}: BlogListProps) => {
