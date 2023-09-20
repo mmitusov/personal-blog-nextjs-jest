@@ -49,3 +49,9 @@ studio: {
 Однако сейчас он абсолютно сломан и не работает. И его переименовали с Draft Mode на Preview Mode. Чтобы потренироваться я создал пару api: preview и exit-preview. Хоть код внутри них и не рабочий, но api пути в новой версии Next.js, должны выглядеть именно так. Поэтому все связаное с Preview Mode я создавать не буду, а лишь потренеруюсь с новой api структурой . P.S. Крайний туториал от Sanity, о том как подключить Preview Mode, что я нашел: https://www.sanity.io/guides/nextjs-live-preview. Но на момент интеграции не работал.
 
 groq - это кастомный query язык для 'Sanity studio', который мы используем для фетчинга данных из него. В каком-то смысле это GraphQL альтернатива для 'Sanity studio'. Сама логика квери запроса дожна быть прописаны в обратных скобках -  const query = groq`...`;.
+
+Но чтобы подключаться к БД 'Sanity studio', нам необходимо сперва создать конфигурационный файл, "sanity.client.ts". После чего мы сможем делать квери запросы - `client.fetch(query)`. 
+
+Однако теперь у нас нет типизации для данных что возвращает нам БД 'Sanity studio'. Поэтому в папке typings мы создадим дополнительный Declaration Files с расширением ".d.ts" - typings.d.ts.
+
+Стоит заметить что 'Sanity studio' также пердоставляет и плагины/библиотеки для автоматического создания типов базируясь на классах БД схем, которые мы создавали для Sanity. То есть происходит Type Inference - TypeScript infers types of variables when there is no explicit information available in the form of type annotations.

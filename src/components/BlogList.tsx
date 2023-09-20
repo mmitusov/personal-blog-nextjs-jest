@@ -1,5 +1,5 @@
 interface BlogListProps {
-  posts: Post[]; 
+  posts: Post[]; //Typed from typings.d.ts
 }
 
 const BlogList = ({posts}: BlogListProps) => {

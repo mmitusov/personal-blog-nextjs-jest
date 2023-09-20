@@ -10,7 +10,7 @@ const query = groq`
   } | order(_createdAt desc)
 `;
 
-export const Home = async () => {
+const Home = async () => {
   const posts = await client.fetch(query)
   console.log(posts)
 
@@ -21,3 +21,5 @@ export const Home = async () => {
     </main>
   )
 }
+
+export default Home
