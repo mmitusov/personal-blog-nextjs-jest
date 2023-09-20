@@ -54,4 +54,4 @@ groq - это кастомный query язык для 'Sanity studio', кото
 
 Однако теперь у нас нет типизации для данных что возвращает нам БД 'Sanity studio'. Поэтому в папке typings мы создадим дополнительный Declaration Files с расширением ".d.ts" - typings.d.ts.
 
-Стоит заметить что 'Sanity studio' также пердоставляет и плагины/библиотеки для автоматического создания типов базируясь на классах БД схем, которые мы создавали для Sanity. То есть происходит Type Inference - TypeScript infers types of variables when there is no explicit information available in the form of type annotations.
+Стоит заметить что 'Sanity studio' также пердоставляет и плагины/библиотеки для автоматического создания типов базируясь на классах БД схем, которые мы создавали для Sanity. То есть происходит Type Inference - TypeScript infers types of variables when there is no explicit information available in the form of type annotations. Sanity caled it Sanity Codegen - Generate TypeScript types from your Sanity schemas. Also includes a simple and tiny (<1kB) TypeScript powered client.
