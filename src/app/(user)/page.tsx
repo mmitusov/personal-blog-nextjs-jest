@@ -17,7 +17,6 @@ const Home = async () => {
   return (
     <main className="">
       <BlogList posts={posts}/>
-      Hello!!!
     </main>
   )
 }
