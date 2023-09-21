@@ -12,7 +12,7 @@ const query = groq`
 
 const Home = async () => {
   const posts = await client.fetch(query)
-  console.log(posts)
+  console.log(posts.map(post => post._id))
 
   return (
     <main className="">

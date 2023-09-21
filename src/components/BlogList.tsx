@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import imgUrlSanity from "../../sanity-config/utils/imgUrl";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
