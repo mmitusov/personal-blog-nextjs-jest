@@ -75,3 +75,4 @@ CSS 'group-hover' будет применяться только если род
 После чего займемься динамическим роутингом, для каждого отдельного поста и создадим папки - post/[slug]. И по нашему {slug} id-шнику будем подтягивать, конкретный пост из 'Sanity studio'.
 
 npm i react-portable-text 
+reactPortableComponents
