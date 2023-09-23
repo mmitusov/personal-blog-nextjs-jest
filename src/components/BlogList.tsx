@@ -43,7 +43,7 @@ const BlogList = ({posts}: BlogListProps) => {
                     {post?.categories 
                       ? 
                         post?.categories?.map(category => (
-                          <div className="bg-[#F7AB0A] text-center text-black px-3 py-1 rounded-full text-sm font-semibold">
+                          <div key={category?._id} className="bg-[#F7AB0A] text-center text-black px-3 py-1 rounded-full text-sm font-semibold">
                             <p>{category?.title ? category?.title : "No categories provided"}</p>
                           </div>
                         ))
