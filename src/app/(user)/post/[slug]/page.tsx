@@ -2,6 +2,8 @@ import { groq } from "next-sanity";
 import { client } from "../../../../../sanity-config/utils/sanity.client";
 import Image from "next/image";
 import imgUrlSanity from "../../../../../sanity-config/utils/imgUrl";
+import PortableText from "react-portable-text"
+import { reactPortableComponents } from "@/components/reactPortableComponents";
 
 interface Props {
   params: {
@@ -25,8 +27,7 @@ const Post = async ({params: {slug}}: Props) => {
   const postAuthor: Post = await client.fetch(queryAuthor, {slug})
   const postCategories: Post = await client.fetch(queryCategories, {slug})
 
-  console.log(postAuthor)
-  console.log(postCategories)
+  // console.log(postAuthor?.body[0]?.children[0]?.text)
 
   return (
     <article className="px-10 pb-28">
@@ -92,6 +93,8 @@ const Post = async ({params: {slug}}: Props) => {
           </section>
         </div>
       </section>
+
+      <PortableText content={postAuthor?.body} serializers={reactPortableComponents}/>
     </article>
   )
 }
