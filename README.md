@@ -1,7 +1,10 @@
 npm create sanity@latest 
 npm i next-sanity (for connecting sanity  back with next.js front)
-npm i react-portable-text 
+npm i react-portable-text
 
+npm i -D jest ts-jest jest-environment-jsdom @testing-library/jest-dom @testing-library/react @testing-library/user-event 
+
+# App development
 Сперва почистим проэкт. Удалим вся лишенее из стартовой страницы. Глобальные стили переместим в созданую нами папку 'styles'. А favicon.ico переместим в глобальную папку 'public'. Мы можем хранить favicon.ico как папке '/public', так и в корне папки '/app'. И так, и так - Next сможет считывать нашу картинку.
 
 Далее подключим Sanity к нашему проекту. По стандарту, Sanity устанавливается как отдельная среда, но для удобства, мы сделаем ее частью нашего Next приложения. А для этого воспользуемся следующей хитростью:
@@ -85,3 +88,4 @@ CSS 'group-hover' будет применяться только если род
 А чтобы добавить ISR поведение, мы всего должны использовать разерезвированное в Next.js слово "revalidate" - `export const revalidate = 60;`. И теперь через 60 сек после презагрузки страницы мы увидим новый контент. Больше о 'revalidate' можно прочитать - (ТУТ)[https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#revalidating-data].
 
 Но ISR работает только в продакшн версии приложения! Поэтому чтобы его протестировать, мы должны сперва создать билд приложения ("next run build"), и запустить уже продакшн версию ("next run start").
+
