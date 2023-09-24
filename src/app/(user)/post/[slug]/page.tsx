@@ -11,6 +11,25 @@ interface Props {
   }
 }
 
+export async function generateStaticParams() {
+  //Getting list of all slugs that we have
+  const query = groq`
+    *[_type=='post'] 
+    {
+      slug
+    }
+  `; 
+
+  //Fetching data about each separate slug
+  const slugs: Post [] = await client.fetch(query) ;
+  // const slugRoutes = slugs.map((slug) => slug.slug.current);
+
+  //Далее вытянем инфу каждого отдельного slug, которая далее передасться в - {params: {slug}
+  return slugs.map((slug) => ({
+    slug: slug.slug.current, //dynamic_route_id: slug_name,
+  }));
+}
+
 const Post = async ({params: {slug}}: Props) => {
   const queryAuthor = groq`
     *[_type=='post' && slug.current == $slug][0] {
