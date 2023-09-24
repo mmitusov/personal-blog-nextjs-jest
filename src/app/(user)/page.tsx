@@ -16,6 +16,7 @@ const Home = async () => {
 
   return (
     <main className="">
+      <h1>TESTING</h1>
       <BlogList posts={posts}/>
     </main>
   )
