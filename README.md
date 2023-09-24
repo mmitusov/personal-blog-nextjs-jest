@@ -2,7 +2,8 @@ npm create sanity@latest
 npm i next-sanity (for connecting sanity  back with next.js front)
 npm i react-portable-text
 
-npm i -D jest ts-jest jest-environment-jsdom @testing-library/jest-dom @testing-library/react @testing-library/user-event 
+npm i -D jest ts-jest jest-environment-jsdom @testing-library/jest-dom @testing-library/react @testing-library/user-event
+npm i -D eslint-plugin-jest-dom eslint-plugin-testing-library
 
 # App development
 Сперва почистим проэкт. Удалим вся лишенее из стартовой страницы. Глобальные стили переместим в созданую нами папку 'styles'. А favicon.ico переместим в глобальную папку 'public'. Мы можем хранить favicon.ico как папке '/public', так и в корне папки '/app'. И так, и так - Next сможет считывать нашу картинку.
