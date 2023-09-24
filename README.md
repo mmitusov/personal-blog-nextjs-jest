@@ -80,4 +80,8 @@ CSS 'group-hover' будет применяться только если род
 
 То есть мы будем использовать (Incremental Static Regeneration (ISR))[https://www.freecodecamp.org/news/rendering-patterns/#static-site-generation-ssg-].
 
-Новый ISR синтаксис в Next.js использует функцию "generateStaticParams" для этих задач.
+Новый SSR синтаксис в Next.js использует функцию "generateStaticParams" для этих задач.
+
+А чтобы добавить ISR поведение, мы всего должны использовать разерезвированное в Next.js слово "revalidate" - `export const revalidate = 60;`. И теперь через 60 сек после презагрузки страницы мы увидим новый контент. Больше о 'revalidate' можно прочитать - (ТУТ)[https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#revalidating-data].
+
+Но ISR работает только в продакшн версии приложения! Поэтому чтобы его протестировать, мы должны сперва создать билд приложения ("next run build"), и запустить уже продакшн версию ("next run start").

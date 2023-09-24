@@ -11,6 +11,8 @@ interface Props {
   }
 }
 
+export const revalidate = 30; //revalidate this page every 30 seconds
+
 export async function generateStaticParams() {
   //Getting list of all slugs that we have
   const query = groq`
@@ -22,7 +24,6 @@ export async function generateStaticParams() {
 
   //Fetching data about each separate slug
   const slugs: Post [] = await client.fetch(query) ;
-  // const slugRoutes = slugs.map((slug) => slug.slug.current);
 
   //Далее вытянем инфу каждого отдельного slug, которая далее передасться в - {params: {slug}
   return slugs.map((slug) => ({

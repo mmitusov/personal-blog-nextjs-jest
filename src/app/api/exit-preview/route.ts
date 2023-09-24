@@ -6,7 +6,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 //   res.end()
 // }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const exit = async (req: NextApiRequest, res: NextApiResponse) => {
   res.clearPreviewData({})
   res.redirect('/')
+  res.end('Preview mode disabled')
 }

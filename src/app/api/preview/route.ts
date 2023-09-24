@@ -12,7 +12,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 //   res.end('Preview mode enabled')
 // }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const preview = async (req: NextApiRequest, res: NextApiResponse) => {
   res.setPreviewData({})
   res.redirect('/')
   res.end('Preview mode enabled')
