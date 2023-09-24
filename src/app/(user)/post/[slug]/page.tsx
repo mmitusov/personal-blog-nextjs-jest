@@ -26,7 +26,6 @@ const Post = async ({params: {slug}}: Props) => {
   `;
   const postAuthor: Post = await client.fetch(queryAuthor, {slug})
   const postCategories: Post = await client.fetch(queryCategories, {slug})
-
   // console.log(postAuthor?.body[0]?.children[0]?.text)
 
   return (
@@ -85,8 +84,7 @@ const Post = async ({params: {slug}}: Props) => {
                   : 
                     <div className="bg-[#aa61e2] text-center text-white px-3 py-1 mt-4 rounded-full text-sm font-semibold">
                       <p>No categories provided</p>
-                    </div>
-                    
+                    </div>  
                 }
               </div>
             </div>

@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import imgUrlSanity from "../../sanity-config/utils/imgUrl";
+// import Image from "next/image";
+// import Link from "next/link";
+// import imgUrlSanity from "../../sanity-config/utils/imgUrl";
 
 export const reactPortableComponents = {
   normal: (props: any) => <h4 className="p-10 text-3xl text-blue-700 font-extrabold" {...props} />,
