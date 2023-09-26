@@ -4,6 +4,7 @@ npm i react-portable-text
 
 npm i -D jest ts-jest jest-environment-jsdom @testing-library/jest-dom @testing-library/react @testing-library/user-event
 npm i -D eslint-plugin-jest-dom eslint-plugin-testing-library
+npm i -D @testing-library/jest-dom@5.16.5
 
 # App development
 Сперва почистим проэкт. Удалим вся лишенее из стартовой страницы. Глобальные стили переместим в созданую нами папку 'styles'. А favicon.ico переместим в глобальную папку 'public'. Мы можем хранить favicon.ico как папке '/public', так и в корне папки '/app'. И так, и так - Next сможет считывать нашу картинку.
@@ -93,6 +94,24 @@ CSS 'group-hover' будет применяться только если род
 # Testing
 Среда для тестировки в Next.js настраивается немнго заморочено. Поэтому мы сперва разберем как ее установить и настроить.
 
-Для начала установим все выше перечисленные зависимости. Добавим пару новых команд для старта приложения в package.json. И создадим новый файл в корне проекта - jest.config.js.
+Для начала установим все выше перечисленные зависимости. Добавим пару новых команд для старта приложения в package.json. И создадим новый файл в корне проекта - jest.config.js ((взято из Next.js доков)[https://nextjs.org/docs/pages/building-your-application/optimizing/testing#jest-and-react-testing-library]).
 
-npm i -D @testing-library/jest-dom@5.16.5
+Стоит заметить что финальная версия  @testing-library/jest-dom работает с ошибками, поэтому мы установим прошлую стабильную версию - @5.16.5. На новой версии, во время написания тестов, не работают expect, test, it.
+
+Для jest.config.js, также создадим вспомогательный файл - jest.setup.js.
+
+Далее, так как мы установили ES Lint, то нам его также нужно будет модифицировать, если мы хотим использовать линтер в тестах. Для этого установим 2 библиотеки - eslint-plugin-jest-dom, eslint-plugin-testing-library. И добавим их в .eslintrc.json.
+
+При желании, в Jest можно явно указать, на каком порту нужно выполнять тесты (например, http://localhost/3000)
+
+P.S. Jest отказывается работать в связке с Sanity и постоянно выдает ошибки. Делов том что тестовая среда никак не может отрендерить компоненты в котором содержаться Sanity и запросы БД Sanity. 
+
+1. Сперва были ошибки того что Jest (не видит глобальные переменные которые используются для инициализации sanityClient)[https://www.sanity.io/answers/webpackerror-configuration-must-contain-projectid-p1605652536328400]. Поэтому переменные пришлось вбивать вручную.
+
+2. Далее появились ошибки с тестовой средой - Error: Cross origin http://localhost forbidden. Для решения ошибки, нужно было явно указать в какой среде должен работать Jest. Однако не сработал ни (первый метод)[https://medium.com/@joenjenga/its-jest-common-problem-faced-using-jest-9905e96db8a] где мы указывали вручную указывали среду. Ни (второй метод)[https://stackoverflow.com/questions/51554366/jest-securityerror-localstorage-is-not-available-for-opaque-origins], где мы указывали среду в jest.config.js файле, при помощи "testURL: "http://localhost/"" (так как мол этот метод устарел).
+
+3. Решилась только проблема по асинхронной отрисовке Next.js компонента, прирендеренге его в тестовом файле. Решение - это (отрендерить его асинхронно)[https://stackoverflow.com/questions/75729282/testing-an-async-server-component-with-jest-in-next-13] - "render(await Home())".
+
+В качестве структурирования тестов, я выбрах подход, где мы будем хранить все тесты в папке "__tests__".
+
+При написании тестов мы будем пользоваться triple A pattern for writing tests: Arrange - Act - Assert.
